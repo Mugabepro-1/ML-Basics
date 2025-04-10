@@ -13,3 +13,8 @@ def r2_score(y_true, y_pred):
 
 def accuracy(y_true, y_pred):
     return np.mean(y_true == y_pred)
+
+def precision(y_true, y_pred, pos_label=1):
+    tp = np.sum((y_true == pos_label) & (y_pred == pos_label))
+    fp = np.sum((y_true != pos_label) & (y_pred == pos_label))
+    return tp / (tp + fp) if (tp + fp) > 0 else 0
